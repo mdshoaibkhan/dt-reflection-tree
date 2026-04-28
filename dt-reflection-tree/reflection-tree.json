@@ -1,0 +1,240 @@
+{
+  "nodes": [
+    {
+      "id": "START",
+      "type": "start",
+      "text": "Good evening. Let’s reflect on your day.",
+      "next": "A1_Q1"
+    },
+    {
+      "id": "A1_Q1",
+      "type": "question",
+      "text": "How did your day feel overall?",
+      "options": ["In control", "Mixed", "Out of control", "Frustrating"],
+      "next": "A1_D1"
+    },
+    {
+      "id": "A1_D1",
+      "type": "decision",
+      "rules": {
+        "In control": "A1_Q2_INT",
+        "Mixed": "A1_Q2_INT",
+        "Out of control": "A1_Q2_EXT",
+        "Frustrating": "A1_Q2_EXT"
+      }
+    },
+    {
+      "id": "A1_Q2_INT",
+      "type": "question",
+      "text": "What helped things go well?",
+      "options": ["My preparation", "My decisions", "Team support", "Adaptability"],
+      "signal": "axis1:internal",
+      "next": "A1_REF_INT"
+    },
+    {
+      "id": "A1_Q2_EXT",
+      "type": "question",
+      "text": "When things went wrong, what did you feel?",
+      "options": ["Others caused it", "Bad luck", "No control", "I felt stuck"],
+      "signal": "axis1:external",
+      "next": "A1_REF_EXT"
+    },
+    {
+      "id": "A1_REF_INT",
+      "type": "reflection",
+      "text": "You recognized your role in outcomes today. That’s a strong sense of agency.",
+      "next": "A1_Q3"
+    },
+    {
+      "id": "A1_REF_EXT",
+      "type": "reflection",
+      "text": "It felt like things were outside your control. But even small choices matter — can you spot one?",
+      "next": "A1_Q3"
+    },
+    {
+      "id": "A1_Q3",
+      "type": "question",
+      "text": "When facing a challenge, what did you actually do?",
+      "options": [
+        "Tried different approaches",
+        "Waited for help",
+        "Avoided it",
+        "Handled it step by step"
+      ],
+      "next": "A1_D2"
+    },
+    {
+      "id": "A1_D2",
+      "type": "decision",
+      "rules": {
+        "Tried different approaches": "A1_REF_INT2",
+        "Handled it step by step": "A1_REF_INT2",
+        "Waited for help": "A1_REF_EXT2",
+        "Avoided it": "A1_REF_EXT2"
+      }
+    },
+    {
+      "id": "A1_REF_INT2",
+      "type": "reflection",
+      "text": "Even in difficulty, you acted. That’s ownership — small actions build control.",
+      "signal": "axis1:internal",
+      "next": "BRIDGE_1_2"
+    },
+    {
+      "id": "A1_REF_EXT2",
+      "type": "reflection",
+      "text": "Pausing or waiting is natural. But growth begins when you take even one small step.",
+      "signal": "axis1:external",
+      "next": "BRIDGE_1_2"
+    },
+    {
+      "id": "BRIDGE_1_2",
+      "type": "bridge",
+      "text": "Now let’s look at what you gave today.",
+      "next": "A2_Q1"
+    },
+    {
+      "id": "A2_Q1",
+      "type": "question",
+      "text": "Which moment stands out?",
+      "options": [
+        "Helped someone",
+        "Did extra work",
+        "Expected recognition",
+        "Felt others didn’t do enough"
+      ],
+      "next": "A2_D1"
+    },
+    {
+      "id": "A2_D1",
+      "type": "decision",
+      "rules": {
+        "Helped someone": "A2_REF_CONTRIB",
+        "Did extra work": "A2_REF_CONTRIB",
+        "Expected recognition": "A2_REF_ENTITLE",
+        "Felt others didn’t do enough": "A2_REF_ENTITLE"
+      }
+    },
+    {
+      "id": "A2_REF_CONTRIB",
+      "type": "reflection",
+      "text": "You focused on contributing beyond yourself. That builds trust and impact.",
+      "signal": "axis2:contribution",
+      "next": "A2_Q2"
+    },
+    {
+      "id": "A2_REF_ENTITLE",
+      "type": "reflection",
+      "text": "You were aware of what you expected. What might shift if you focused on what you could give?",
+      "signal": "axis2:entitlement",
+      "next": "A2_Q2"
+    },
+    {
+      "id": "A2_Q2",
+      "type": "question",
+      "text": "How did you react when your effort wasn’t noticed?",
+      "options": [
+        "Still continued helping",
+        "Felt demotivated",
+        "Expected appreciation",
+        "Did only what was required"
+      ],
+      "next": "A2_D2"
+    },
+    {
+      "id": "A2_D2",
+      "type": "decision",
+      "rules": {
+        "Still continued helping": "A2_REF_CONTRIB2",
+        "Did only what was required": "A2_REF_CONTRIB2",
+        "Felt demotivated": "A2_REF_ENTITLE2",
+        "Expected appreciation": "A2_REF_ENTITLE2"
+      }
+    },
+    {
+      "id": "A2_REF_CONTRIB2",
+      "type": "reflection",
+      "text": "You stayed focused on contribution, not validation. That builds long-term trust.",
+      "signal": "axis2:contribution",
+      "next": "BRIDGE_2_3"
+    },
+    {
+      "id": "A2_REF_ENTITLE2",
+      "type": "reflection",
+      "text": "Wanting recognition is human. But contribution creates impact even when unseen.",
+      "signal": "axis2:entitlement",
+      "next": "BRIDGE_2_3"
+    },
+    {
+      "id": "BRIDGE_2_3",
+      "type": "bridge",
+      "text": "Finally, let’s widen the perspective.",
+      "next": "A3_Q1"
+    },
+    {
+      "id": "A3_Q1",
+      "type": "question",
+      "text": "Who did today impact most?",
+      "options": [
+        "Only me",
+        "My team",
+        "A colleague",
+        "Customers/users"
+      ],
+      "next": "A3_REF"
+    },
+    {
+      "id": "A3_REF",
+      "type": "reflection",
+      "text": "The more you expand your view, the more meaning your work can hold.",
+      "next": "A3_Q2"
+    },
+    {
+      "id": "A3_Q2",
+      "type": "question",
+      "text": "When thinking about others today, what stood out?",
+      "options": [
+        "I supported someone",
+        "I noticed others struggling",
+        "I focused on my own tasks",
+        "I didn’t think much about others"
+      ],
+      "next": "A3_D2"
+    },
+    {
+      "id": "A3_D2",
+      "type": "decision",
+      "rules": {
+        "I supported someone": "A3_REF_WIDE",
+        "I noticed others struggling": "A3_REF_WIDE",
+        "I focused on my own tasks": "A3_REF_NARROW",
+        "I didn’t think much about others": "A3_REF_NARROW"
+      }
+    },
+    {
+      "id": "A3_REF_WIDE",
+      "type": "reflection",
+      "text": "You extended beyond yourself today. That’s where meaning grows.",
+      "signal": "axis3:wide",
+      "next": "SUMMARY"
+    },
+    {
+      "id": "A3_REF_NARROW",
+      "type": "reflection",
+      "text": "It’s easy to stay focused inward. Expanding your view can shift your experience.",
+      "signal": "axis3:narrow",
+      "next": "SUMMARY"
+    },
+    {
+      "id": "SUMMARY",
+      "type": "summary",
+      "text": "Today, you leaned toward {axis1} control, {axis2} contribution, and a {axis3} perspective.",
+      "next": "END"
+    },
+    {
+      "id": "END",
+      "type": "end",
+      "text": "See you tomorrow."
+    }
+  ]
+}
