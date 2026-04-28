@@ -37,3 +37,5 @@ All final logic, branching, and structure were manually designed and refined.
 - Improve summary personalization
 - Expand tree depth and coverage
 - Add data persistence for user sessions
+## Design Philosophy
+The tree is designed as a guided reflection conversation rather than a static survey, where each question builds on the previous response to deepen self-awareness across the three axes.
